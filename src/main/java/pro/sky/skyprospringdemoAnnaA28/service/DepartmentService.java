@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import pro.sky.skyprospringdemoAnnaA28.domain.Employee;
 
 import java.util.*;
-import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,27 +16,27 @@ public class DepartmentService {
 
     public Employee findMaxSalary(int departmentId) {
         return employeeService.getAll().stream()
-                .filter(e -> e.getDepartment() == departmentId)
+                .filter(e -> e.getDepartmentId() == departmentId)
                 .max(Comparator.comparingInt(Employee::getSalary))
                 .orElse(null);
     }
 
     public Employee findMinSalary(int departmentId) {
         return employeeService.getAll().stream()
-                .filter(e -> e.getDepartment() == departmentId)
+                .filter(e -> e.getDepartmentId() == departmentId)
                 .min(Comparator.comparingInt(Employee::getSalary))
                 .orElse(null);
     }
 
     public Collection<Employee> findByDepartment(int departmentId) {
         return employeeService.getAll().stream()
-                .filter(e -> e.getDepartment() == departmentId)
+                .filter(e -> e.getDepartmentId() == departmentId)
                 .collect(Collectors.toList());
     }
 
     public Map<Integer, List<Employee>> groupByDepartment() {
     return employeeService.getAll().stream()
-            .collect(Collectors.groupingBy(Employee::getDepartment));
+            .collect(Collectors.groupingBy(Employee::getDepartmentId));
     }
 
 

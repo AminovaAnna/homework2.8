@@ -6,13 +6,13 @@ public class Employee {
     private final String firstName;
     private final String lastName;
     private int salary;
-    private int department;
+    private int departmentId;
 
     public Employee(String firstName, String lastName, int salary, int department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
-        this.department = department;
+        this.departmentId = department;
     }
 
     public String getFirstName() {
@@ -31,12 +31,12 @@ public class Employee {
         this.salary = salary;
     }
 
-    public int getDepartment() {
-        return department;
+    public int getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment(int department) {
-        this.department = department;
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class Employee {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", salary=" + salary +
-                ", department=" + department +
+                ", departmentId=" + departmentId +
                 '}';
     }
 
@@ -54,11 +54,11 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return salary == employee.salary && department == employee.department && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
+        return salary == employee.salary && departmentId == employee.departmentId && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, salary, department);
+        return Objects.hash(firstName, lastName, salary, departmentId);
     }
 }
